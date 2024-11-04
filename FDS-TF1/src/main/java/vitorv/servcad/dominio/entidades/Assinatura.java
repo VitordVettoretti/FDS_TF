@@ -4,15 +4,16 @@ import java.time.LocalDate;
 
 public class Assinatura {
     private Long codigo;
-    private Aplicativo aplicativo;
-    private Cliente cliente;
+    private Long aplicativoCodigo;
+    private Long clienteCodigo;
     private LocalDate inicioVigencia;
     private LocalDate fimVigencia;
+    private String status;
 
-    public Assinatura(Long codigo, Aplicativo aplicativo, Cliente cliente, LocalDate inicioVigencia, LocalDate fimVigencia) {
+    public Assinatura(Long codigo, Long aplicativoCodigo, Long clienteCodigo, LocalDate inicioVigencia, LocalDate fimVigencia) {
         this.codigo = codigo;
-        this.aplicativo = aplicativo;
-        this.cliente = cliente;
+        this.aplicativoCodigo = aplicativoCodigo;
+        this.clienteCodigo = clienteCodigo;
         this.inicioVigencia = inicioVigencia;
         this.fimVigencia = fimVigencia;
     }
@@ -21,12 +22,12 @@ public class Assinatura {
         return codigo;
     }
 
-    public Aplicativo getAplicativo() {
-        return aplicativo;
+    public Long getAplicativo() {
+        return aplicativoCodigo;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public Long getCliente() {
+        return clienteCodigo;
     }
 
     public LocalDate getInicioVigencia() {
@@ -39,5 +40,9 @@ public class Assinatura {
 
     public void setFimVigencia(LocalDate fimVigencia) {
         this.fimVigencia = fimVigencia;
+    }
+
+    public String getStatus() {
+        return status;
     }
 }

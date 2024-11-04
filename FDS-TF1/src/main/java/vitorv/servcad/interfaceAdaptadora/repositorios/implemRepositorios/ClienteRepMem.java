@@ -12,6 +12,7 @@ public class ClienteRepMem implements IClienteRepositorio {
 
     public ClienteRepMem(){
         clientes = new LinkedList<>();
+        clientes.add( new Cliente(1L, "João", "joao@gmail.com"));
     }
 
     @Override

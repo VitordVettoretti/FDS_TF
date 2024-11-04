@@ -55,16 +55,16 @@ public class Controller {
     }
 
     // POST /servcad/assinaturas - Cria uma nova assinatura
-    @PostMapping("/assinaturas")
+    /*@PostMapping("/assinaturas")
     public Assinatura criarAssinatura(@RequestBody AssinaturaRequest request) {
         return criarAssinaturaUC.execute(request);
-    }
+    }*/
 
     // POST /servcad/aplicativos/custo/:idAplicativo - Atualiza o custo do aplicativo
-    @PostMapping("/aplicativos/custo/{idAplicativo}")
+    /*@PostMapping("/aplicativos/custo/{idAplicativo}")
     public Aplicativo atualizarCustoAplicativo(@PathVariable Long idAplicativo, @RequestBody CustoRequest request) {
         return atualizarCustoAplicativoUC.execute(idAplicativo, request);
-    }
+    }*/
 
     // GET /servcad/assinaturas/{tipo} - Lista assinaturas por tipo
     @GetMapping("/assinaturas/{tipo}")
@@ -73,24 +73,24 @@ public class Controller {
     }
 
     // GET /servcad/clientes/{codcli}/assinaturas - Lista assinaturas de um cliente
-    @GetMapping("/clientes/{codcli}/assinaturas")
+    /*@GetMapping("/clientes/{codcli}/assinaturas")
     public List<Assinatura> listarAssinaturasPorCliente(@PathVariable Long codcli) {
         return listarAssinaturasPorClienteUC.execute(codcli);
-    }
+    }*/
 
     // GET /servcad/aplicativos/{codapp}/assinaturas - Lista assinaturas de um aplicativo
-    @GetMapping("/aplicativos/{codapp}/assinaturas")
+    /*@GetMapping("/aplicativos/{codapp}/assinaturas")
     public List<Assinatura> listarAssinaturasPorAplicativo(@PathVariable Long codapp) {
         return listarAssinaturasPorAplicativoUC.execute(codapp);
-    }
+    }*/
 
-    @PostMapping("/registrarpagamento")
+    /*@PostMapping("/registrarpagamento")
     public PagamentoResponse registrarPagamento(@RequestBody PagamentoRequest request) {
         return registrarPagamentoUC.execute(request);
-    }
+    }*/
 
-    @GetMapping("/assinvalida/{codass}")
+    /*@GetMapping("/assinvalida/{codass}")
     public boolean verificarAssinaturaInvalida(@PathVariable Long codass) {
         return verificarAssinaturaValidaUC.execute(codass);
-    }
+    }*/
 }
