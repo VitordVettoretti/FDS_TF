@@ -73,16 +73,16 @@ public class Controller {
     }
 
     // GET /servcad/clientes/{codcli}/assinaturas - Lista assinaturas de um cliente
-    /*@GetMapping("/clientes/{codcli}/assinaturas")
+    @GetMapping("/clientes/{codcli}/assinaturas")
     public List<Assinatura> listarAssinaturasPorCliente(@PathVariable Long codcli) {
         return listarAssinaturasPorClienteUC.execute(codcli);
-    }*/
+    }
 
     // GET /servcad/aplicativos/{codapp}/assinaturas - Lista assinaturas de um aplicativo
-    /*@GetMapping("/aplicativos/{codapp}/assinaturas")
+    @GetMapping("/aplicativos/{codapp}/assinaturas")
     public List<Assinatura> listarAssinaturasPorAplicativo(@PathVariable Long codapp) {
         return listarAssinaturasPorAplicativoUC.execute(codapp);
-    }*/
+    }
 
     /*@PostMapping("/registrarpagamento")
     public PagamentoResponse registrarPagamento(@RequestBody PagamentoRequest request) {
