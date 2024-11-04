@@ -16,7 +16,7 @@ public class RegistrarPagamentoUC {
         this.repositorioPagamento = repositorioPagamento;
     }
 
-    public Pagamento registrarPagamento(Long codigoAssinatura, double valorPago, String promocao) {
+    public Pagamento execute(Long codigoAssinatura, double valorPago, String promocao) {
         Assinatura assinatura = repositorioAssinatura.buscarPorCodigo(codigoAssinatura);
         Pagamento pagamento = new Pagamento(1L, assinatura, valorPago, LocalDate.now(), promocao);
 

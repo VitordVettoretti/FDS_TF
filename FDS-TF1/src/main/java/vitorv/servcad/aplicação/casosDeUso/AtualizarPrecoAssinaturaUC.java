@@ -10,7 +10,7 @@ public class AtualizarPrecoAssinaturaUC {
         this.repositorioAplicativo = repositorioAplicativo;
     }
 
-    public Aplicativo atualizarCusto(Long codigoAplicativo, double novoCusto) {
+    public Aplicativo execute(Long codigoAplicativo, double novoCusto) {
         Aplicativo aplicativo = repositorioAplicativo.buscarPorCodigo(codigoAplicativo);
         if (aplicativo != null) {
             aplicativo.setCusto(novoCusto);

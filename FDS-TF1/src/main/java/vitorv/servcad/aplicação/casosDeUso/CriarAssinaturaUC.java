@@ -14,7 +14,7 @@ public class CriarAssinaturaUC {
         this.repositorioAssinatura = repositorioAssinatura;
     }
 
-    public Assinatura executar(Long codigoCliente, Aplicativo aplicativo) {
+    public Assinatura execute(Long codigoCliente, Aplicativo aplicativo) {
         // Cria uma nova assinatura com 7 dias de validade inicial
         Cliente cliente = new Cliente(codigoCliente, "NomeCliente", "email@cliente.com");
         Assinatura novaAssinatura = new Assinatura(1L, aplicativo, cliente, LocalDate.now(), LocalDate.now().plusDays(7));
