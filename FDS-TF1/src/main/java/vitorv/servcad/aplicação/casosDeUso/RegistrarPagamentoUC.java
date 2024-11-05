@@ -1,6 +1,7 @@
 package vitorv.servcad.aplicação.casosDeUso;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 import vitorv.servcad.dominio.entidades.Assinatura;
 import vitorv.servcad.dominio.entidades.Pagamento;
@@ -16,9 +17,9 @@ public class RegistrarPagamentoUC {
         this.repositorioPagamento = repositorioPagamento;
     }
 
-    public Pagamento execute(Long codigoAssinatura, double valorPago, String promocao) {
+    public Pagamento execute(Date dataPagamento, Long codigoAssinatura, double valorPago, String promocao) {
         Assinatura assinatura = repositorioAssinatura.buscarPorCodigo(codigoAssinatura);
-        Pagamento pagamento = new Pagamento(1L, assinatura, valorPago, LocalDate.now(), promocao);
+        Pagamento pagamento = new Pagamento(1L, assinatura, valorPago, dataPagamento, promocao);
 
         // Lógica de estender validade
         if (assinatura.getFimVigencia().isBefore(LocalDate.now())) {

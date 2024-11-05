@@ -3,6 +3,9 @@ package vitorv.servcad.interfaceAdaptadora.controladores;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.*;
+import java.time.LocalDate;
+import java.util.Date;
+
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import vitorv.servcad.aplicação.casosDeUso.RegistrarPagamentoUC;
-import vitorv.servcad.aplicação.casosDeUso.AtualizarPrecoAssinaturaUC;
 import vitorv.servcad.aplicação.casosDeUso.ListarClientesUC;
 import vitorv.servcad.aplicação.casosDeUso.ListarAplicativosUC;
 import vitorv.servcad.aplicação.casosDeUso.CriarAssinaturaUC;
@@ -55,16 +57,16 @@ public class Controller {
     }
 
     // POST /servcad/assinaturas - Cria uma nova assinatura
-    /*@PostMapping("/assinaturas")
+    @PostMapping("/assinaturas")
     public Assinatura criarAssinatura(@RequestBody AssinaturaRequest request) {
-        return criarAssinaturaUC.execute(request);
-    }*/
+        return criarAssinaturaUC.execute(request.getClienteCodigo(), request.getCodigoAplicativo());
+    }
 
     // POST /servcad/aplicativos/custo/:idAplicativo - Atualiza o custo do aplicativo
-    /*@PostMapping("/aplicativos/custo/{idAplicativo}")
+    @PostMapping("/aplicativos/custo/{idAplicativo}")
     public Aplicativo atualizarCustoAplicativo(@PathVariable Long idAplicativo, @RequestBody CustoRequest request) {
-        return atualizarCustoAplicativoUC.execute(idAplicativo, request);
-    }*/
+        return atualizarCustoAplicativoUC.execute(idAplicativo, request.getCusto());
+    }
 
     // GET /servcad/assinaturas/{tipo} - Lista assinaturas por tipo
     @GetMapping("/assinaturas/{tipo}")
@@ -86,11 +88,111 @@ public class Controller {
 
     /*@PostMapping("/registrarpagamento")
     public PagamentoResponse registrarPagamento(@RequestBody PagamentoRequest request) {
-        return registrarPagamentoUC.execute(request);
+        return registrarPagamentoUC.execute(request.getDataPagamento(), request.getCodigoAssinatura(), request.getValorPago(), "none");
     }*/
 
-    /*@GetMapping("/assinvalida/{codass}")
+    @GetMapping("/assinvalida/{codass}")
     public boolean verificarAssinaturaInvalida(@PathVariable Long codass) {
         return verificarAssinaturaValidaUC.execute(codass);
-    }*/
+    }
+
+    public class AssinaturaRequest {
+        private Long codigoCliente;
+        private Long codigoAplicativo;
+
+        public Long getClienteCodigo() {
+            return codigoCliente;
+        }
+    
+        public void setCodigoCliente(Long clienteId) {
+            this.codigoCliente = clienteId;
+        }
+    
+        public Long getCodigoAplicativo() {
+            return codigoAplicativo;
+        }
+    
+        public void setCodigoAplicativo(Long aplicativoId) {
+            this.codigoAplicativo = aplicativoId;
+        }
+    }
+
+    public class CustoRequest {
+        private double custo;
+
+        public double getCusto() {
+            return custo;
+        }
+
+        public void setCusto(double custo) {
+            this.custo = custo;
+        }
+    }
+
+    public class PagamentoRequest {
+        private Date dataPagamento;
+        private Long codigoAssinatura;
+        private double valorPago;
+
+        public Date getDataPagamento() {
+            return dataPagamento;
+        }
+
+        public void setDataPagamento(Date dataPagamento) {
+            this.dataPagamento = dataPagamento;
+        }
+
+        public Long getCodigoAssinatura() {
+            return codigoAssinatura;
+        }
+
+        public void setCodigoAssinatura(Long codigoAssinatura) {
+            this.codigoAssinatura = codigoAssinatura;
+        }
+
+        public double getValorPago() {
+            return valorPago;
+        }
+
+        public void setValorPago(double valorPago) {
+            this.valorPago = valorPago;
+        }
+    }
+
+    public class PagamentoResponse {
+        private Long codigo;
+        private Assinatura assinatura;
+        private double valorPago;
+        private Date dataPagamento;
+        private String promocao;
+
+        public PagamentoResponse(Long codigo, Assinatura assinatura, double valorPago, Date dataPagamento, String promocao) {
+            this.codigo = codigo;
+            this.assinatura = assinatura;
+            this.valorPago = valorPago;
+            this.dataPagamento = dataPagamento;
+            this.promocao = promocao;
+        }
+
+        public Long getCodigo() {
+            return codigo;
+        }
+
+        public Assinatura getAssinatura() {
+            return assinatura;
+        }
+
+        public double getValorPago() {
+            return valorPago;
+        }
+
+        public Date getDataPagamento() {
+            return dataPagamento;
+        }
+
+        public String getPromocao() {
+            return promocao;
+        }
+    }
 }
+    

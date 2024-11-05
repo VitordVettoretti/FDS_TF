@@ -1,15 +1,16 @@
 package vitorv.servcad.dominio.entidades;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 public class Pagamento {
     private Long codigo;
     private Assinatura assinatura;
     private double valorPago;
-    private LocalDate dataPagamento;
+    private Date dataPagamento;
     private String promocao;
 
-    public Pagamento(Long codigo, Assinatura assinatura, double valorPago, LocalDate dataPagamento, String promocao) {
+    public Pagamento(Long codigo, Assinatura assinatura, double valorPago, Date dataPagamento, String promocao) {
         this.codigo = codigo;
         this.assinatura = assinatura;
         this.valorPago = valorPago;
@@ -29,7 +30,7 @@ public class Pagamento {
         return valorPago;
     }
 
-    public LocalDate getDataPagamento() {
+    public Date getDataPagamento() {
         return dataPagamento;
     }
 
