@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.util.Date;
 
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,7 +34,7 @@ import vitorv.servcad.dominio.entidades.Pagamento;
 @RestController
 @RequestMapping("/servcad")
 public class Controller {
-
+    @Autowired
     private ListarClientesUC listarClientesUC;
     private ListarAplicativosUC listarAplicativosUC;
     private CriarAssinaturaUC criarAssinaturaUC;
